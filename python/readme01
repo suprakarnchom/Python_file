@@ -1,0 +1,7 @@
+/device/meters
+	Def device_meters(site=”all”,building=”all”,floor=”all”)
+		Return dict(meters=[])
+/device/meter/id => name
+	Def device_meter_by_name(name,field=”all”,groupbytime=”15m”,from=”1706500369”,to=”now”,limit=1)
+		Return dict
+		
