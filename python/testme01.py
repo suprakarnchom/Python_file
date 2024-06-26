@@ -253,11 +253,110 @@ def isPalindrome(x):
 isPalindrome(x)
 
 print(n)
+# class Solution:
+#     def scoreOfString(self, s: str) -> int:
+#         h,e,l,o,a,z = 104, 101, 108, 111, 97, 122
+#         i = 0
+#         for s in range(len(s)):
+#             sum = abs(s[i] - s[i+1])
+#             i += 1
+#             return sum
+
+
+words = ["abc","bcd","aaaa","cbc"]
+word = 'and'
+x= "a"
+s = word.index(x)
+print(s)
+print(type(x))
+print(type(words))
+
+def count_a(alpha,words_list):
+    m = []
+    for w in words_list:
+        if alpha in w:
+            n = words_list.index(w)
+            m.append(n)
+    return m
+            
+            
+count_a('b',['ba','ac','ab'])
+
+
+'''
 class Solution:
-    def scoreOfString(self, s: str) -> int:
-        h,e,l,o,a,z = 104, 101, 108, 111, 97, 122
-        i = 0
-        for s in range(len(s)):
-            sum = abs(s[i] - s[i+1])
-            i += 1
-            return sum
+    def findWordsContaining(self, words: List[str], x: str) -> List[int]:
+        for w in words:
+            if x in w:
+                n = words.index(w)
+                m = []
+                m.append(n)
+            return m
+       '''
+
+count_a(x,words)
+
+
+words.count('a')
+b = "banana"
+b.count('a')
+
+for i in words:
+    print(i)
+    n = i.count('a')
+    print(n)
+    n = n+n
+    print(n)
+
+m = []
+n = 1
+
+m.append(n)
+print(m)
+
+
+n = "32"
+
+list(n)
+
+max(list(n))
+
+def minPartiions(n):
+    l = list(n)
+    
+nums1 = [1,2,3,1,1,3]
+len(nums1)
+
+def number_of_good_pairs(nums):
+    r = 0
+    for i in nums:
+            for k in nums:
+                if i == k and nums.index(i) < nums.index(k):
+                    r += 1
+    return r
+
+nums1.index(1)
+            
+number_of_good_pairs(nums1)
+
+# nums = [1,1,1,1]
+
+
+# r = 0
+
+
+
+print(r)
+
+
+n = 5
+
+for i in range(0,n):
+    for k in range(i,n):
+        if i == k:
+            continue
+        else:
+            print(i,k)
+print()
+
+

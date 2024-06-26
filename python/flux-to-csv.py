@@ -1,0 +1,33 @@
+import influxdb_client, os, time
+from influxdb_client import InfluxDBClient, Point, WritePrecision
+from influxdb_client.client.write_api import SYNCHRONOUS
+import pandas as pd
+import json
+from rich import print
+from collections import OrderedDict, defaultdict
+token = "2iDTxJVR-lZI20WI3yUnQno4uFu94yV5ZD873WAxXvaUnx7vX77OCyr-YsdMCCGfhIjfw1Vr5Y09Nfka67kFEA=="
+org = "MEA"
+url = "http://10.46.25.123:8086"
+
+client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
+
+def MeterReading():
+    query = f'''
+    from(bucket: "wat_liab")
+        |> range(start: -30d)
+        |> filter(fn: (r) => r["_measurement"] == "power_meter")
+        |> aggregateWindow(every: 15m, fn: mean, createEmpty: false)
+        |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
+    '''
+    return query
+
+query = MeterReading()
+query_api = client.query_api()
+df_meter_list = query_api.query_data_frame(org=org, query=query)
+
+# Join the list of DataFrames into a single DataFrame
+df_meter = pd.concat(df_meter_list)
+
+print(type(df_meter))
+print(df_meter)
+df_meter.to_csv('/home/chompu/Documents/Meta Back end/files/meters01.csv', index=False)
